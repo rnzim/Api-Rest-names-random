@@ -14,12 +14,12 @@ app.use(express.json())
 
 
 app.get('/names',(req,res)=>{
-    Names.findAll().
+    Names.findOne({order: connection.random()}).
     then((name)=>{
         if(name == null){
             res.sendStatus(404)
         }else{
-            res.json({name:name})
+            res.json({name:name.name})
         }
         
          
